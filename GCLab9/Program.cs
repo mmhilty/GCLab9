@@ -70,7 +70,7 @@ What would you like to do?
                     Console.WriteLine(@"
 Student Directory
 =============================================");
-                    foreach (KeyValuePair<string, StudentRecord> kvp in studentDictionary)
+                    foreach (KeyValuePair<string, StudentRecord> kvp in studentDictionary.OrderBy(key => key.Key))
                     {
                         StudentRecord record = kvp.Value;
                         Console.WriteLine($"{record.firstName} {record.lastName}");
@@ -216,16 +216,7 @@ Which student do you want to get more information about?
             return recordDict;
         }
 
-        //public object createRecord() //gets the student's information and stores it in a class object
-        //{
-        //    string lastName = getString("last name");
-        //    string firstName = getString("first name");
-        //    string studentHobby = getString("hobby");
-        //    string faveFood = getString("favorite food");
-        //    string shoeSize = getString("shoe size");
 
-        //    StudentRecord newRecord = new StudentRecord(firstName, lastName, studentHobby, faveFood, shoeSize);
-        //    return newRecord;
 
             /*List<string> newRecordList = new List<string>(); //creates list and fills it with records
             newRecordList.Add(lastName);
@@ -238,7 +229,7 @@ Which student do you want to get more information about?
 
         //}
 
-        public static string getString(string prompt) //added null handling
+        public static string getString(string prompt) //added no entry handling
         {
             while(true)
             {
@@ -255,15 +246,14 @@ Which student do you want to get more information about?
                 }
             }
         }
-
-        
+                
         public static string createKey(string lastName, string firstName) //key is ALL CAPS
         {
             string keyCreated = $"{lastName}{firstName}";
             return keyCreated.ToUpper(); 
         }
 
-        
+       
 
     }
 
