@@ -238,11 +238,22 @@ Which student do you want to get more information about?
 
         //}
 
-        public static string getString(string prompt) //add null handling
+        public static string getString(string prompt) //added null handling
         {
-            Console.WriteLine($"What is the student's {prompt}.");
-            return Console.ReadLine();
-
+            while(true)
+            {
+                Console.WriteLine($"What is the student's {prompt}?");
+                string userInput = Console.ReadLine();
+                if (userInput != "")
+                {
+                    return userInput;
+                }
+                else
+                {
+                    Console.WriteLine("You have to put something in, buddy.");
+                    continue;
+                }
+            }
         }
 
         
